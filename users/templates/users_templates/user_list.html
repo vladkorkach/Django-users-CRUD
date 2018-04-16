@@ -1,0 +1,42 @@
+{% extends 'base/_base.html' %}
+
+{% load BizzFuzz is_allowed from user_templatetags %}
+
+{% block main %}
+  <p>
+    <a href="{% url 'users:create-user' %}">
+      <button type="button" class="btn btn-sm btn-info">CREATE USER</button>
+    </a>
+  </p>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>User Name</th>
+        <th>Birthday</th>
+        <th>Eligible</th>
+        <th>Random Number</th>
+        <th>Bizz Fuzz</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in object_list %}
+      <tr>
+        <td>{{ user.username }}</td>
+        <td>{{ user.birthday }}</td>
+        <td>{% is_allowed user.birthday %}</td>
+        <td>{{ user.random_number }}</td>
+        <td>{% BizzFuzz user.random_number %}</td>
+        <td>
+          <a href="{% url 'users:user-detail' user.pk %}">Details</a>
+          <a href="{% url 'users:user-edit' user.pk %}">Edit</a>
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'users:export-users-csv' %}">
+    <button type="button" class="btn btn-sm btn-info">Download List In CSV</button>
+  </a>
+
+{% endblock %}

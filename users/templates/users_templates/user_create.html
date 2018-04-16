@@ -1,0 +1,14 @@
+{% extends 'base/_base.html' %}
+
+{% block main %}
+
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'users:user-list' %}">
+      <button type="button" class="btn btn-sm btn-info">Back</button>
+    </a>
+    <button type="submit" class="btn btn-sm btn-primary">Create</button>
+  </form>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link rel="stylesheet" href="{% static 'styles/css/main.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+    <div class="main-wrapper">
+      {% block main %}{% endblock %}
+    </div>
+  </body>
+
+</html>

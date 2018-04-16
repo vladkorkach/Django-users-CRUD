@@ -1,0 +1,36 @@
+{% extends 'base/_base.html' %}
+
+{% block main %}
+
+  <form action="{% url 'users:remove-user' object.pk %}" method="post" class="create-user-form">
+    {% csrf_token %}
+    <p>
+      <label for="id_username">Username:</label> <span class="helptext">{{ object.username }}</span>
+    </p>
+    <p>
+      <label for="id_first_name">First name:</label> <span class="helptext">{{ object.first_name }}</span>
+    </p>
+    <p>
+      <label for="id_last_name">Last name:</label> <span class="helptext">{{ object.last_name }}</span>
+    </p>
+    <p>
+      <label for="id_email">Email address:</label> <span class="helptext">{{ object.email }}</span>
+    </p>
+    <p>
+      <label for="id_is_active">Active:</label> <span class="helptext">{{ object.is_active }}</span>
+    </p>
+    <p>
+      <label for="id_is_staff">Staff status:</label> <span class="helptext">{{ object.is_staff }}</span>
+    </p>
+    <p>
+      <label for="id_is_superuser">Superuser status:</label> <span class="helptext">{{ object.is_superuser }}</span>
+    </p>
+    <p>
+      <label for="id_random_number">Random number:</label> <span class="helptext">{{ object.random_number }}</span>
+    </p>
+
+    <a href="{% url 'users:user-list' %}">Back To Home</a>
+    <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+  </form>
+
+{% endblock %}
